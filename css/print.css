@@ -1,0 +1,37 @@
+/* css/print.css */
+
+/* This CSS only activates when the user presses CTRL+P or clicks the Print button */
+@media print {
+    /* Hide the header, navigation, footer, and buttons */
+    .main-header, 
+    .main-footer, 
+    .main-nav, 
+    button, 
+    h2, p { 
+        display: none !important; 
+    }
+
+    /* Reset margins and backgrounds to save ink */
+    body, .content-wrapper {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Make sure the table takes up the full width */
+    .products-container, .table-responsive {
+        width: 100%;
+        margin: 0;
+    }
+
+    .product-table {
+        width: 100%;
+        border: 1px solid #000;
+    }
+
+    /* Ensure text is black for printing */
+    * {
+        color: black !important;
+    }
+}
