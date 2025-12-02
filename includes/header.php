@@ -1,6 +1,9 @@
 <?php
 // Start the session on every page for login logic later
-session_start();
+// ONLY start the session if one isn't already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,21 +22,26 @@ session_start();
     </div>
     
     <nav class="main-nav">
-        <ul>
-            <li><a href="home.php">Home</a></li>
-            <li><a href="products.php">Products</a></li> <li><a href="gallery.php">Gallery</a></li>
-            <li><a href="video.php">Video</a></li>
-            <li><a href="support.php">Support</a></li> <li><a href="calculator.php">Tools</a></li> <li><a href="about.php">About</a></li>
-            
-            <?php if(isset($_SESSION['user_id'])): ?>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li><a href="logout.php" class="btn-logout">Logout</a></li>
-            <?php else: ?>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Register</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
+    <ul>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="products.php">Products</a></li> 
+        <li><a href="cart.php">Cart <?php echo isset($_SESSION['cart']) ? '('.array_sum($_SESSION['cart']).')' : ''; ?></a></li>
+        
+        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="video.php">Video</a></li>
+        <li><a href="support.php">Support</a></li> 
+        <li><a href="calculator.php">Tools</a></li> 
+        <li><a href="about.php">About</a></li>
+        
+        <?php if(isset($_SESSION['user_id'])): ?>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="logout.php" class="btn-logout">Logout</a></li>
+        <?php else: ?>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="register.php">Register</a></li>
+        <?php endif; ?>
+    </ul>
+</nav>
 </header>
 
 <main class="content-wrapper">
