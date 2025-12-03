@@ -3,8 +3,8 @@
 include '../includes/header.php';
 include '../includes/db.php';
 
-// [CHANGE 1] Updated Query: Added 'p.product_id' so we can identify items
-$sql = "SELECT p.product_id, p.name, p.description, p.price, c.category_name, p.stock_quantity 
+// [CHANGE 1] Updated Query: Added 'p.image_path' to the list of columns we select
+$sql = "SELECT p.product_id, p.name, p.description, p.price, c.category_name, p.stock_quantity, p.image_path 
         FROM products p 
         JOIN categories c ON p.category_id = c.category_id";
 $result = $conn->query($sql);
@@ -18,18 +18,26 @@ $result = $conn->query($sql);
         <table class="product-table">
             <thead>
                 <tr>
+                    <th>Image</th>
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Stock</th>
-                    <th>Action</th> </tr>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
                 <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
+                        
+                        // [CHANGE 3] Display the Image
+                        // Checks if image exists, otherwise shows a default placeholder text
+                        $img = !empty($row['image_path']) ? "../image/" . $row['image_path'] : "../image/placeholder.jpg";
+                        echo "<td><img src='$img' alt='Product Image' width='60' height='60' style='object-fit: cover; border-radius: 4px;'></td>";
+                        
                         echo "<td>" . htmlspecialchars($row["name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["category_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["description"]) . "</td>";
@@ -37,7 +45,7 @@ $result = $conn->query($sql);
                         
                         if($row["stock_quantity"] > 0) {
                             echo "<td>" . $row["stock_quantity"] . "</td>";
-                            // [CHANGE 3] Add to Cart Form
+                            // Add to Cart Form
                             echo "<td>
                                     <form method='post' action='cart.php'>
                                         <input type='hidden' name='product_id' value='" . $row["product_id"] . "'>
@@ -51,11 +59,11 @@ $result = $conn->query($sql);
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6'>No products found</td></tr>";
+                    echo "<tr><td colspan='7'>No products found</td></tr>"; // Increased colspan to 7
                 }
                 ?>
                 <tr>
-                    <td colspan="5" style="text-align: right; font-weight: bold;">Total Items Listed:</td>
+                    <td colspan="6" style="text-align: right; font-weight: bold;">Total Items Listed:</td>
                     <td><?php echo $result->num_rows; ?></td>
                 </tr>
             </tbody>
@@ -64,18 +72,20 @@ $result = $conn->query($sql);
 </div>
 
 <style>
-    .product-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    .product-table th, .product-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    .product-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white;}
+    .product-table th, .product-table td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: middle; }
     .product-table th { background-color: #333; color: white; }
-    .product-table tr:nth-child(even) { background-color: #f2f2f2; }
-    /* New Button Style */
+    .product-table tr:nth-child(even) { background-color: #f9f9f9; }
+    
+    /* Button Style */
     .btn-add {
         background-color: #ff9800;
         color: white;
         border: none;
-        padding: 5px 10px;
+        padding: 8px 12px;
         cursor: pointer;
         border-radius: 4px;
+        font-weight: bold;
     }
     .btn-add:hover { background-color: #e68900; }
 </style>

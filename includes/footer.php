@@ -1,7 +1,7 @@
 </main> <footer class="main-footer">
     <div class="footer-content">
         <p>&copy; 2025 ElectroTech Store. All Rights Reserved.</p>
-        <p><a href="contact.php">Contact Us</a></p>
+        <p><a href="support.php">Contact Us</a></p>
     </div>
 
     <div class="w3c-badges">

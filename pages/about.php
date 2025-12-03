@@ -5,9 +5,9 @@ include '../includes/header.php';
 
 <div class="about-container" style="max-width: 900px; margin: 0 auto;">
     <h2>About the Developer</h2>
-    <p>This project was developed for CPCS 403. Below is the developer's professional resume.</p>
+    <p>This project was developed for CPCS 403. Below is one of the developer's professional resume.</p>
 
-    <div class="resume-wrapper" style="border: 1px solid #ccc; margin-top: 20px; height: 800px;">
+    <div class="resume-wrapper" style="border: 1px solid #ccc; margin-top: 20px; height: 900px;">
         <object data="../image/resume.pdf" type="application/pdf" width="100%" height="100%">
             <p>Your web browser doesn't have a PDF plugin. 
             You can adhere to the requirement by using a browser like Chrome or Edge.</p>
