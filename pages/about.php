@@ -3,7 +3,7 @@
 include '../includes/header.php';
 ?>
 
-<div class="about-container" style="max-width: 900px; margin: 0 auto;">
+<div class="about-container">
     <h2>About the Developer</h2>
     <p>This project was developed for CPCS 403. Below is one of the developer's professional resume.</p>
 
