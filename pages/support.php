@@ -5,21 +5,21 @@ include '../includes/header.php';
 
 $message = "";
 
-// --- PHP FORM HANDLING (Will run when you submit the form) ---
+// --- PHP FORM HANDLING ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 1. Capture data
     $name = $_POST['fullname'];
     $email = $_POST['email'];
     $device = $_POST['device_type'];
-    $issue = $_POST['issue_type']; // Radio button
+    $issue = isset($_POST['issue_type']) ? $_POST['issue_type'] : '';
     $details = $_POST['details'];
     
-    // Checkboxes (need special handling if unchecked)
+    // Checkboxes
     $priority = isset($_POST['priority']) ? "Urgent" : "Normal";
     $callback = isset($_POST['callback']) ? "Yes" : "No";
 
     /* // --- DATABASE LOGIC (Keep commented until DB is created) ---
-    // Requirement: Check if email already exists [cite: 96-98]
+    // Requirement: Check if email already exists
     $check_sql = "SELECT * FROM support_tickets WHERE email = '$email'";
     $result = $conn->query($check_sql);
 
@@ -39,11 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     */
     
     // Temporary message for testing visuals
-    $message = "<div class='success-msg'>Form logic works! (Database currently disabled)</div>";
+    $message = "<div class='success-msg'>Ticket submitted successfully! (Database simulation)</div>";
 }
 ?>
 
-<div class="form-container">
+<link rel="stylesheet" href="../css/support.css">
+
+<div class="support-container">
     <h2>Technical Support Request</h2>
     <p>Please fill out the form below. All fields marked with * are mandatory.</p>
 
@@ -56,22 +58,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <div class="form-group">
                 <label for="fullname">Full Name: *</label>
-                <input type="text" id="fullname" name="fullname">
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address: *</label>
-                <input type="text" id="email" name="email">
+                <input type="email" id="email" name="email" placeholder="Enter your email address">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
-                <input type="text" id="phone" name="phone">
+                <input type="text" id="phone" name="phone" placeholder="Optional phone number">
             </div>
 
             <div class="form-group">
                 <label for="serial">Device Serial Number:</label>
-                <input type="text" id="serial" name="serial">
+                <input type="text" id="serial" name="serial" placeholder="Found on the back of your device">
             </div>
         </fieldset>
 
@@ -90,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="form-group">
-                <label>Warranty Status: *</label><br>
+                <label style="display:block; margin-bottom:8px;">Warranty Status: *</label>
                 <input type="radio" id="under_warranty" name="issue_type" value="Warranty">
                 <label for="under_warranty">Under Warranty</label>
                 
@@ -99,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="form-group">
-                <label>Preferences:</label><br>
+                <label style="display:block; margin-bottom:8px;">Preferences:</label>
                 <input type="checkbox" id="priority" name="priority" value="Urgent">
                 <label for="priority">Mark as Urgent Priority</label>
                 <br>
@@ -109,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="details">Describe the Problem: *</label>
-                <textarea id="details" name="details" rows="5"></textarea>
+                <textarea id="details" name="details" rows="5" placeholder="Please describe the issue in detail..."></textarea>
             </div>
         </fieldset>
 
@@ -118,20 +120,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <script src="../script/validation.js"></script>
-
-<style>
-    /* Form Styles */
-    .form-container { max-width: 600px; margin: 0 auto; }
-    fieldset { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; background: white; }
-    legend { font-weight: bold; font-size: 1.2em; color: #333; }
-    .form-group { margin-bottom: 15px; }
-    label { display: inline-block; margin-bottom: 5px; font-weight: bold; }
-    input[type="text"], select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
-    .btn-submit { background-color: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
-    .btn-submit:hover { background-color: #218838; }
-    .error-msg { color: red; background: #ffe6e6; padding: 10px; margin-bottom: 15px; border: 1px solid red; }
-    .success-msg { color: green; background: #e6ffe6; padding: 10px; margin-bottom: 15px; border: 1px solid green; }
-</style>
 
 <?php
 include '../includes/footer.php';

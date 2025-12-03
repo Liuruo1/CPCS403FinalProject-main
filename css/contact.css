@@ -1,0 +1,173 @@
+/* css/contact.css */
+
+.contact-container {
+    max-width: 1000px; /* Wider to fit both columns */
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden; /* For the rounded corners */
+}
+
+/* Flexbox Layout for Split View */
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* --- Left Column: Form --- */
+.contact-form-section {
+    flex: 2;
+    padding: 40px;
+}
+
+.contact-form-section h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #ff9800;
+    outline: none;
+}
+
+.btn-submit {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #ff9800;
+}
+
+/* --- Right Column: Contact Info --- */
+.contact-info-section {
+    flex: 1;
+    background-color: #333;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #ff9800;
+}
+
+.info-item {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.info-item .icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.info-item a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.info-item a:hover {
+    color: #ff9800;
+}
+
+/* Social Media Links */
+.social-media {
+    margin-top: 30px;
+}
+
+.social-media h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background-color: #ff9800;
+    transform: translateY(-3px);
+}
+
+/* Success Message */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+/* Responsive: Stack columns on small screens */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .contact-info-section {
+        order: -1; /* Puts info on top on mobile */
+        padding: 30px;
+    }
+}

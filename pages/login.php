@@ -37,29 +37,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<div class="form-container">
+<link rel="stylesheet" href="../css/login.css">
+
+<div class="login-container">
     <h2>Login</h2>
     <?php echo $message; ?>
     
-    <form action="login.php" method="POST">
+    <form action="login.php" method="POST" class="login-form">
         <div class="form-group">
-            <label>Username:</label>
-            <input type="text" name="username" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
         </div>
         <div class="form-group">
-            <label>Password:</label>
-            <input type="password" name="password" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
         </div>
         <button type="submit" class="btn-submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="register.php">Register here</a>.</p>
+    
+    <p class="register-link">Don't have an account? <a href="register.php">Register here</a>.</p>
 </div>
-
-<style>
-    .form-container { max-width: 400px; margin: 30px auto; padding: 20px; background: white; border: 1px solid #ccc; }
-    .form-group { margin-bottom: 15px; }
-    input { width: 100%; padding: 8px; margin-top: 5px; }
-    .error-msg { color: red; background: #ffe6e6; padding: 10px; margin-bottom: 10px; }
-</style>
 
 <?php include '../includes/footer.php'; ?>

@@ -1,0 +1,77 @@
+/* css/calculator.css */
+
+.calculator-container {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.calculator-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.calculator-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.calc-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.calc-form input,
+.calc-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.calc-form input:focus,
+.calc-form select:focus {
+    border-color: #ff9800;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.2);
+}
+
+.btn-calculate {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-calculate:hover {
+    background-color: #ff9800;
+    transform: translateY(-2px);
+}
+
+#result {
+    margin-top: 25px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #28a745;
+    text-align: center;
+    min-height: 1.5em; /* Keeps space reserved to prevent jumping */
+    padding: 10px;
+    border-radius: 6px;
+}

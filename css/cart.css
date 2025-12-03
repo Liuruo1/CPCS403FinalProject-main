@@ -1,0 +1,126 @@
+/* css/cart.css */
+
+.cart-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.cart-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 40px 0;
+}
+
+.empty-cart-msg a {
+    color: #ff9800;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.empty-cart-msg a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styles */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden; /* For rounded corners on the table */
+}
+
+.product-table th, .product-table td {
+    border-bottom: 1px solid #eee; /* Cleaner horizontal lines only */
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.product-table th {
+    background-color: #333;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.total-row {
+    background-color: #333 !important; /* Force dark background */
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Action Buttons */
+.btn-remove {
+    color: #dc3545;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-remove:hover {
+    background-color: #ffebee;
+    text-decoration: none;
+}
+
+.cart-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-action {
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-clear {
+    background-color: white;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.btn-clear:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-checkout {
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #28a745;
+}
+
+.btn-checkout:hover {
+    background-color: #218838;
+    border-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}

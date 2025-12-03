@@ -1,0 +1,130 @@
+/* css/support.css */
+
+.support-container {
+    max-width: 800px; /* Wider for comfortable form filling */
+    margin: 40px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.support-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.support-container > p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Form Structure */
+fieldset {
+    border: 1px solid #eee;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #ff9800; /* Orange accent */
+    padding: 0 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #ff9800;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 152, 0, 0.2);
+}
+
+/* Radio & Checkbox Styling */
+input[type="radio"], 
+input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.1); /* Make them slightly bigger */
+    cursor: pointer;
+}
+
+.form-group label[for] {
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+/* Submit Button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #ff9800;
+    transform: translateY(-2px);
+}
+
+/* Messages */
+.error-msg {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+}
+
+.success-msg {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+}

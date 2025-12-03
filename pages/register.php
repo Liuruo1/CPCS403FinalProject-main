@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 2. Hash the password (SECURITY REQUIREMENT)
             $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
 
-            // 3. Insert into DB using Prepared Statements (SQL INJECTION PREVENTION)
+            // 3. Insert into DB using Prepared Statements
             $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $user, $email, $hashed_password);
 
@@ -42,38 +42,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<div class="form-container">
+<link rel="stylesheet" href="../css/register.css">
+
+<div class="register-container">
     <h2>Create Account</h2>
     <?php echo $message; ?>
     
-    <form action="register.php" method="POST">
+    <form action="register.php" method="POST" class="register-form">
         <div class="form-group">
-            <label>Username:</label>
-            <input type="text" name="username" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Choose a username">
         </div>
+        
         <div class="form-group">
-            <label>Email:</label>
-            <input type="email" name="email" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
         </div>
+        
         <div class="form-group">
-            <label>Password:</label>
-            <input type="password" name="password" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Create a password">
         </div>
+        
         <div class="form-group">
-            <label>Confirm Password:</label>
-            <input type="password" name="confirm_password" required>
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required placeholder="Repeat your password">
         </div>
+        
         <button type="submit" class="btn-submit">Register</button>
     </form>
-    <p>Already have an account? <a href="login.php">Login here</a>.</p>
+    
+    <p class="login-link">Already have an account? <a href="login.php">Login here</a>.</p>
 </div>
-
-<style>
-    .form-container { max-width: 400px; margin: 30px auto; padding: 20px; background: white; border: 1px solid #ccc; }
-    .form-group { margin-bottom: 15px; }
-    input { width: 100%; padding: 8px; margin-top: 5px; }
-    .error-msg { color: red; background: #ffe6e6; padding: 10px; margin-bottom: 10px; }
-    .success-msg { color: green; background: #e6ffe6; padding: 10px; margin-bottom: 10px; }
-</style>
 
 <?php include '../includes/footer.php'; ?>

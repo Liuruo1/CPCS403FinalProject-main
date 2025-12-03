@@ -26,8 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <li><a href="home.php">Home</a></li>
         <li><a href="products.php">Products</a></li> 
         <li><a href="cart.php">Cart <?php echo isset($_SESSION['cart']) ? '('.array_sum($_SESSION['cart']).')' : ''; ?></a></li>
-        
-        <li><a href="gallery.php">Gallery</a></li>
+        <li><a href="contact.php">Contact</a></li>
         <li><a href="video.php">Video</a></li>
         <li><a href="support.php">Support</a></li> 
         <li><a href="calculator.php">Tools</a></li> 

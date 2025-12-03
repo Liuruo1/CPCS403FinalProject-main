@@ -1,7 +1,7 @@
 <?php
 // pages/dashboard.php
 include '../includes/header.php';
-include '../includes/db.php'; // [ADDED] Connect to DB
+include '../includes/db.php'; 
 
 // SECURITY CHECK: If user is not logged in, kick them out
 if (!isset($_SESSION['user_id'])) {
@@ -12,10 +12,12 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 ?>
 
-<div class="dashboard-container" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+<link rel="stylesheet" href="../css/dashboard.css">
+
+<div class="dashboard-container">
     <h2>Member Dashboard</h2>
     
-    <div class="welcome-box" style="background: #e2e6ea; padding: 20px; border-radius: 5px; margin-bottom: 30px;">
+    <div class="welcome-box">
         <h3>Welcome back, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h3>
         <p>Manage your account and view your order history below.</p>
     </div>
@@ -66,7 +68,7 @@ $user_id = $_SESSION['user_id'];
                                     
                                     $item_list = [];
                                     while($item = $items->fetch_assoc()){
-                                        $item_list[] = $item['quantity'] . "x " . $item['name'];
+                                        $item_list[] = "<strong>" . $item['quantity'] . "x</strong> " . htmlspecialchars($item['name']);
                                     }
                                     echo implode("<br>", $item_list);
                                     ?>
@@ -81,31 +83,15 @@ $user_id = $_SESSION['user_id'];
                 </table>
             </div>
         <?php else: ?>
-            <p>You haven't placed any orders yet. <a href="products.php">Start shopping!</a></p>
+            <p class="empty-history">You haven't placed any orders yet. <a href="products.php">Start shopping!</a></p>
         <?php endif; 
         $stmt->close();
         ?>
     </div>
 
-    <br><br>
-    <a href="logout.php" class="btn-logout" style="background: red; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Logout</a>
+    <div class="dashboard-actions">
+        <a href="logout.php" class="btn-logout-dash">Logout</a>
+    </div>
 </div>
-
-<style>
-    /* Table Styles */
-    .order-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid #ddd; }
-    .order-table th, .order-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-    .order-table th { background-color: #333; color: white; }
-    .order-table tr:nth-child(even) { background-color: #f9f9f9; }
-    
-    /* Badge Style */
-    .badge-success {
-        background-color: #28a745;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 15px;
-        font-size: 0.85em;
-    }
-</style>
 
 <?php include '../includes/footer.php'; ?>
