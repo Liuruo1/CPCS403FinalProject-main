@@ -1,7 +1,7 @@
 <?php
 // pages/support.php
 include '../includes/header.php';
-// include '../includes/db.php'; // UNCOMMENT THIS when database is ready
+include '../includes/db.php'; 
 
 $message = "";
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $priority = isset($_POST['priority']) ? "Urgent" : "Normal";
     $callback = isset($_POST['callback']) ? "Yes" : "No";
 
-    /* // --- DATABASE LOGIC (Keep commented until DB is created) ---
+    // --- DATABASE LOGIC
     // Requirement: Check if email already exists
     $check_sql = "SELECT * FROM support_tickets WHERE email = '$email'";
     $result = $conn->query($check_sql);
@@ -36,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $message = "<div class='error-msg'>Error: " . $conn->error . "</div>";
         }
     }
-    */
     
-    // Temporary message for testing visuals
-    $message = "<div class='success-msg'>Ticket submitted successfully! (Database simulation)</div>";
+    
+    
+    $message = "<div class='success-msg'>Ticket submitted successfully!</div>";
 }
 ?>
 
