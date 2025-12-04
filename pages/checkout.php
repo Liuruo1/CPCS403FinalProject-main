@@ -178,6 +178,7 @@ include '../includes/header.php';
             <div class="form-group">
                 <label for="address_country">Country:</label>
                 <select id="address_country" name="address_country" required>
+                    <option value="">Select a Country</option>
                     <option value="United States">United States</option>
                     <option value="Saudi Arabia">Saudi Arabia</option>
                     <option value="Canada">Canada</option>

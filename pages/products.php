@@ -77,7 +77,7 @@ $result = $conn->query($sql);
 
 <div id="myLightboxModal" class="lightbox-modal">
   <span class="close-lightbox">&times;</span>
-  <img class="lightbox-content" id="img01">
+  <img class="lightbox-content" id="img01" src="laptop.jpg" alt="Product Image">
   <div id="caption"></div>
 </div>
 

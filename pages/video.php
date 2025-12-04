@@ -32,7 +32,7 @@ include '../includes/header.php';
                     allowfullscreen>
                 </iframe>
             </div>
-            <p>A first look at the titanium build and new camera features.</p>
+            <p>Best headset on the market right now.</p>
         </div>
 
     </div>
