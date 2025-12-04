@@ -131,3 +131,7 @@
 .empty-history a:hover {
     text-decoration: underline;
 }
+
+.align-middle {
+    vertical-align: middle;
+}

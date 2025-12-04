@@ -52,34 +52,75 @@ $user_id = $_SESSION['user_id'];
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($row = $result->fetch_assoc()): ?>
-                            <tr>
-                                <td>#<?php echo $row['order_id']; ?></td>
-                                <td><?php echo date("M d, Y", strtotime($row['order_date'])); ?></td>
-                                
-                                <td>
-                                    <?php
-                                    $oid = $row['order_id'];
-                                    $item_sql = "SELECT p.name, oi.quantity 
-                                                 FROM order_items oi 
-                                                 JOIN products p ON oi.product_id = p.product_id 
-                                                 WHERE oi.order_id = $oid";
-                                    $items = $conn->query($item_sql);
-                                    
-                                    $item_list = [];
-                                    while($item = $items->fetch_assoc()){
-                                        $item_list[] = "<strong>" . $item['quantity'] . "x</strong> " . htmlspecialchars($item['name']);
-                                    }
-                                    echo implode("<br>", $item_list);
-                                    ?>
-                                </td>
-                                
-                                <td>$<?php echo number_format($row['total_amount'], 2); ?></td>
-                                <td><?php echo htmlspecialchars($row['payment_method']); ?></td>
-                                <td><span class="badge-success">Completed</span></td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
+    <?php while ($row = $result->fetch_assoc()): 
+        $oid = $row['order_id'];
+        
+        // 1. Fetch all items for this order first
+        $item_sql = "SELECT p.name, oi.quantity 
+                     FROM order_items oi 
+                     JOIN products p ON oi.product_id = p.product_id 
+                     WHERE oi.order_id = $oid";
+        $items_result = $conn->query($item_sql);
+        
+        $order_items = [];
+        if ($items_result) {
+            while($item = $items_result->fetch_assoc()){
+                $order_items[] = $item;
+            }
+        }
+        
+        // Calculate how many rows this order will take up
+        $rowspan = count($order_items);
+        if ($rowspan == 0) $rowspan = 1; // Safety fallback
+
+        // 2. Loop through items to create the rows
+        foreach ($order_items as $index => $item):
+    ?>
+        <tr>
+            <?php if ($index === 0): ?>
+                <td rowspan="<?php echo $rowspan; ?>" class="align-middle">
+                    #<?php echo $row['order_id']; ?>
+                </td>
+                <td rowspan="<?php echo $rowspan; ?>" class="align-middle">
+                    <?php echo date("M d, Y", strtotime($row['order_date'])); ?>
+                </td>
+            <?php endif; ?>
+
+            <td>
+                <strong><?php echo $item['quantity']; ?>x</strong> 
+                <?php echo htmlspecialchars($item['name']); ?>
+            </td>
+            
+            <?php if ($index === 0): ?>
+                <td rowspan="<?php echo $rowspan; ?>" class="align-middle">
+                    $<?php echo number_format($row['total_amount'], 2); ?>
+                </td>
+                <td rowspan="<?php echo $rowspan; ?>" class="align-middle">
+                    <?php echo htmlspecialchars($row['payment_method']); ?>
+                </td>
+                <td rowspan="<?php echo $rowspan; ?>" class="align-middle">
+                    <span class="badge-success">Completed</span>
+                </td>
+            <?php endif; ?>
+        </tr>
+    <?php endforeach; ?>
+    
+    <?php 
+    // Fallback if an order exists but has no items (data integrity issue)
+    if (empty($order_items)): 
+    ?>
+        <tr>
+            <td>#<?php echo $row['order_id']; ?></td>
+            <td><?php echo date("M d, Y", strtotime($row['order_date'])); ?></td>
+            <td><em>No Items Found</em></td>
+            <td>$<?php echo number_format($row['total_amount'], 2); ?></td>
+            <td><?php echo htmlspecialchars($row['payment_method']); ?></td>
+            <td><span class="badge-success">Empty</span></td>
+        </tr>
+    <?php endif; ?>
+
+    <?php endwhile; ?>
+</tbody>
                 </table>
             </div>
         <?php else: ?>
