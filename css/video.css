@@ -11,21 +11,21 @@
 /* Vertical Stack Layout */
 .video-stack {
     display: flex;
-    flex-direction: column; /* Forces vertical stacking */
-    align-items: center;    /* Centers items horizontally */
-    gap: 50px;              /* Space between the two videos */
+    flex-direction: column; 
+    align-items: center;    
+    gap: 50px;              
     margin-top: 40px;
 }
 
 /* Individual Video Card - Made Bigger */
 .video-card {
-    width: 100%;           /* Take up full available width... */
-    max-width: 900px;      /* ...but stop at 900px (Large size) */
+    width: 100%;          
+    max-width: 900px;     
     background: white;
-    padding: 25px;         /* More padding for a premium look */
+    padding: 25px;        
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: left;      /* Keep text left-aligned for readability */
+    text-align: left;     
 }
 
 .video-card h3 {
@@ -34,11 +34,11 @@
     font-size: 1.5em;
 }
 
-/* Video Player Styling (Handles both <video> and <iframe>) */
+
 .video-wrapper video,
 .video-wrapper iframe {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Ensures standard video shape (widescreen) */
+    aspect-ratio: 16 / 9; 
     border-radius: 6px;
     background: #000;
     margin-bottom: 15px;

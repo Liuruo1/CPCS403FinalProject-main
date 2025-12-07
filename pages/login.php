@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         
-        // 2. Verify Password (compare typed password with DB hash)
+        // 2. Verify Password 
         if (password_verify($pass, $row['password'])) {
             // 3. Start Session
             $_SESSION['user_id'] = $row['user_id'];

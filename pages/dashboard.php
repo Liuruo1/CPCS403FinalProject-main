@@ -106,7 +106,7 @@ $user_id = $_SESSION['user_id'];
     <?php endforeach; ?>
     
     <?php 
-    // Fallback if an order exists but has no items (data integrity issue)
+    // Fallback if an order exists but has no items 
     if (empty($order_items)): 
     ?>
         <tr>

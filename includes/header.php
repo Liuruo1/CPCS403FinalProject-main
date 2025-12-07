@@ -1,6 +1,5 @@
 <?php
-// Start the session on every page for login logic later
-// ONLY start the session if one isn't already active
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

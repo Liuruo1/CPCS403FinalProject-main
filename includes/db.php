@@ -2,8 +2,8 @@
 // includes/db.php
 
 $servername = "sql12.freesqldatabase.com";
-$username = "sql12810309";        // Default XAMPP username
-$password = "h7W2ttTqdv";            // Default XAMPP password (leave empty)
+$username = "sql12810309";       
+$password = "h7W2ttTqdv";           
 $dbname = "sql12810309";
 
 // Create connection

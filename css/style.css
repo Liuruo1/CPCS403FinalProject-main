@@ -64,7 +64,6 @@ body {
     margin: 5px;
 }
 
-/* RESPONSIVE DESIGN [Requirement: Media Queries] */
 
 /* Tablet (768px - 1023px) */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
