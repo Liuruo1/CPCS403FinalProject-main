@@ -2,36 +2,62 @@
 
 /* This CSS only activates when the user presses CTRL+P or clicks the Print button */
 @media print {
-    /* Hide the header, navigation, footer, and buttons */
+    /* 1. Hide the header, navigation, footer */
     .main-header, 
     .main-footer, 
-    .main-nav, 
-    button, 
-    h2, p { 
+    .main-nav { 
         display: none !important; 
     }
 
-    /* Reset margins and backgrounds to save ink */
-    body, .content-wrapper {
-        background-color: white;
-        margin: 0;
-        padding: 0;
-        width: 100%;
+    /* 2. Hide specific page elements you don't want in the printout */
+    button, 
+    .btn-action,       /* Cart buttons */
+    .btn-logout-dash,  /* Dashboard logout button */
+    .welcome-box,      /* Dashboard welcome text */
+    .dashboard-actions,/* Dashboard bottom area */
+    .cart-actions,     /* Cart bottom area */
+    h1, h2, h3, p {    /* Hide all titles and paragraphs */
+        display: none !important; 
     }
 
-    /* Make sure the table takes up the full width */
-    .products-container, .table-responsive {
-        width: 100%;
-        margin: 0;
+    /* 3. Reset margins, backgrounds, and shadows for the main containers */
+    body, 
+    .content-wrapper,
+    .cart-container,
+    .dashboard-container {
+        background-color: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        box-shadow: none !important; /* Remove the card shadow */
+        border: none !important;
+        max-width: 100% !important;
     }
 
-    .product-table {
-        width: 100%;
-        border: 1px solid #000;
+    /* 4. Ensure the table components are visible and take full width */
+    .orders-section,   /* Wrapper in dashboard */
+    .table-responsive, 
+    .product-table,
+    .order-table {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
     }
 
-    /* Ensure text is black for printing */
-    * {
+    .product-table, .order-table {
+        border: 1px solid #000 !important;
+        border-collapse: collapse !important;
+    }
+
+    .product-table th, .order-table th,
+    .product-table td, .order-table td {
+        border: 1px solid #000 !important;
         color: black !important;
+    }
+
+    /* 5. Handle any text inside the table that might have been hidden by the global rules */
+    /* If your table cells contain <p> or <h3>, we must un-hide them here */
+    table h3, table p {
+        display: block !important;
     }
 }
